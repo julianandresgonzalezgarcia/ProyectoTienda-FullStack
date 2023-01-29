@@ -1,0 +1,35 @@
+  .botonNuevo{
+    color: rgb(70, 70, 70);
+  }
+
+  .inputBuscar{
+    margin-left: 677px;
+    margin-top: 10px;
+  }
+
+  .botonVolverListar{
+    margin-left: 10px;
+    box-shadow: 4px 4px rgb(158, 158, 158);
+  }
+
+  .example-card {
+    box-shadow: 4px 4px rgb(158, 158, 158);
+    /*max-width: 365px;*/
+    max-width: 270px;
+    margin: 5px;
+    color:rgb(70, 70, 70);
+  }
+
+  .example-header-image {
+    background-image: url('https://e7.pngegg.com/pngimages/348/800/png-clipart-man-wearing-blue-shirt-illustration-computer-icons-avatar-user-login-avatar-blue-child-thumbnail.png');
+    background-size: cover;
+  }
+  
+  .botonNuevo{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 4px 4px rgb(158, 158, 158);
+    color: rgb(70, 70, 70);
+  }
+
+

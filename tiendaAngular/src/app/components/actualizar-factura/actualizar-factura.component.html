@@ -1,0 +1,44 @@
+<div class="panelActualizar">
+
+    <div align="end">
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>cancel</mat-icon>             
+        </button>
+    </div>
+
+    <h1 mat-dialog-title>Actualizar Factura</h1>
+
+    <form class="example-form">
+        <div mat-dialog-content>
+
+            <div>        
+                <mat-form-field class="inputFactura" appearance="fill">
+                    <mat-label>Id factura</mat-label>
+                    <input [(ngModel)]="factura.num_factura" name="num_factura" matInput disabled type="number">   
+                </mat-form-field>
+
+                <mat-form-field class="inputFactura" appearance="fill">
+                    <mat-label>Fecha</mat-label>
+                    <input [(ngModel)]="factura.fecha" name="fecha" matInput disabled type="date">   
+                </mat-form-field>
+                 
+                <mat-form-field class="inputFactura" appearance="fill">
+                    <mat-label>Cliente</mat-label>
+                    <mat-select [(ngModel)]="factura.cliente.id_cliente" name="cliente.id_cliente">
+                        <mat-option *ngFor="let cliente of clientes" [value]="cliente.id_cliente">
+                            {{cliente.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
+        </div>
+        <div mat-dialog-actions align="end">
+        <button (click)="Actualizar(factura.num_factura,factura)" mat-stroked-button mat-dialog-close>
+            <mat-icon>update</mat-icon>Actualizar
+        </button>
+        
+        </div>
+    </form>
+
+</div>

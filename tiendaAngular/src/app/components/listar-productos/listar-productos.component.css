@@ -1,0 +1,33 @@
+.ListaProductos {
+  margin: 5px;
+  color:rgb(70, 70, 70)  
+}
+
+.botonNuevo{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 4px 4px rgb(158, 158, 158);
+  color: rgb(70, 70, 70);
+}
+
+table{
+  width: 100%;
+}
+th{
+  background-color: rgb(150, 150, 150);
+}
+
+td{
+  text-align: center;
+}
+
+/*.example-card {
+  box-shadow: 4px 4px rgb(158, 158, 158);
+  max-width: 270px;
+  margin: 5px;
+  color:rgb(70, 70, 70);
+}
+
+.example-header-image {
+  background-size: cover;
+}*/

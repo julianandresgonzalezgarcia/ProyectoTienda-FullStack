@@ -1,0 +1,96 @@
+<div class="panelCrear">
+
+    <div align="end">
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>cancel</mat-icon>             
+        </button>
+    </div>
+
+    <h1 mat-dialog-title>Datos de la factura</h1>
+
+    <form class="example-form">
+        <div mat-dialog-content>
+
+            <div>     
+                <mat-form-field class="inputDetalleSeleccion" appearance="fill">
+                    <mat-label>Facturas</mat-label>
+                    <mat-select [(ngModel)]="detalle.factura" name="factura">
+                        <mat-option *ngFor="let factura of facturas" [value]="factura.num_factura">
+                            <b>ID factura: </b>{{factura.num_factura}} - <b>Cliente: </b>{{factura.cliente.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="inputDetalleSeleccion" appearance="fill">
+                    <mat-label>Productos</mat-label>
+                    <mat-select [(ngModel)]="detalle.producto" name="producto">
+                        <mat-option *ngFor="let producto of productos" [value]="producto.id_producto">
+                            <b>ID producto: </b>{{producto.id_producto}} - <b>Nombre: </b>{{producto.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="inputDetalle" appearance="fill">
+                    <mat-label>Cantidad</mat-label>
+                    <input [(ngModel)]="detalle.cantidad" name="cantidad" matInput type="number" placeholder="Cantidad">   
+                </mat-form-field>
+
+                <mat-form-field class="inputDetalle" appearance="fill">
+                    <mat-label>Precio</mat-label>
+                    <input [(ngModel)]="detalle.precio" name="precio" matInput type="number" placeholder="9999999">   
+                </mat-form-field>
+
+            </div>
+<hr>
+
+            <div align="end">
+                <button (click)="estado=true" mat-icon-button>
+                    <mat-icon>lock</mat-icon>
+                </button>
+            </div>
+
+            <h1>Generar Factura</h1>
+
+            <div *ngIf="!estado">
+                <mat-form-field appearance="fill">
+                    <mat-label>Clientes</mat-label>
+                    <mat-select disabled>
+                        <mat-option>
+                            <b>ID Cliente: </b>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button mat-stroked-button disabled style="margin-bottom: 10px; margin-left: 10px;">
+                    <mat-icon>receipt</mat-icon>Generar Factura
+                </button>
+            </div>
+
+            <div *ngIf="estado">
+                <mat-form-field appearance="fill">
+                    <mat-label>Clientes</mat-label>
+                    <mat-select [(ngModel)]="factura.cliente" name="cliente">
+                        <mat-option *ngFor="let cliente of clientes" [value]="cliente.id_cliente">
+                            <b>ID Cliente: </b>{{cliente.id_cliente}} - <b>Nombre: </b>{{cliente.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button (click)="CrearFactura(factura.cliente)" mat-stroked-button style="margin-bottom: 10px; margin-left: 10px;">
+                    <mat-icon>receipt</mat-icon>Generar Factura
+                </button>
+            </div>
+                            
+
+            
+        </div>
+        <div mat-dialog-actions align="end">
+        <button (click)="Guardar(detalle)" mat-stroked-button mat-dialog-close>
+            <mat-icon>save</mat-icon>Guardar
+        </button>      
+        </div>
+    </form>
+
+</div>

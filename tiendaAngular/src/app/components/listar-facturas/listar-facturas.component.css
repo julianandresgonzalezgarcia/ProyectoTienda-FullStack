@@ -1,0 +1,16 @@
+.botonVolverListar{
+    margin-left: 10px;
+    box-shadow: 4px 4px rgb(158, 158, 158);
+}
+.cardFactura{
+    box-shadow: 4px 4px rgb(158, 158, 158);
+    /*max-width: 365px;*/
+    max-width: 370px;
+    margin: 5px;
+    color:rgb(70, 70, 70);
+}
+
+.avatarFactura{
+    background-image: url('https://i.pinimg.com/originals/57/90/ff/5790ff1afc3f9f69d8234f03fe177b43.png');
+    background-size: cover;
+}

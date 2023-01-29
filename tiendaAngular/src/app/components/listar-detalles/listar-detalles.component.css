@@ -1,0 +1,43 @@
+.botonNuevo{
+    box-shadow: 4px 4px rgb(158, 158, 158);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color:rgb(70, 70, 70);
+}
+
+/*.inputBuscarFacutras{
+    margin-left: 430px;
+    margin-top: 10px;
+}*/
+
+.inputBuscar{
+    margin-left: 677px;
+    margin-top: 10px;
+}
+
+.botonVolverListar{
+    margin-left: 10px;
+    box-shadow: 4px 4px rgb(158, 158, 158);
+}
+
+.cardDetalle{
+    box-shadow: 4px 4px rgb(158, 158, 158);
+    /*max-width: 365px;*/
+    max-width: 559px;
+    margin: 5px;
+    color:rgb(70, 70, 70);
+}
+
+.avatarFactura{
+    background-image: url('https://i.pinimg.com/originals/57/90/ff/5790ff1afc3f9f69d8234f03fe177b43.png');
+    background-size: cover;
+}
+
+.producto-detalle{
+    margin-left: 10px; 
+    margin-right: 50px; 
+}
+
+.cliente{
+    margin-left: 10px; 
+}

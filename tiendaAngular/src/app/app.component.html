@@ -1,0 +1,89 @@
+<mat-toolbar class="Mytoolbar">
+
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon">
+       <mat-icon>menu</mat-icon>
+    </button>
+
+    <button (click)="Inicio()" mat-icon-button class="example-icon">
+      <mat-icon>home</mat-icon>
+   </button>
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button>
+      <mat-icon>help</mat-icon>
+    </button>
+
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
+
+</mat-toolbar>
+
+
+<mat-drawer-container class="example-container" autosize>
+
+  <router-outlet></router-outlet>
+
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="BotonesSidenav">
+      <div style="margin-top: 15px;">     
+        <button (click)="ListarClientes()" mat-button class="BotonSidenav">
+          <mat-icon>account_box</mat-icon>          
+          Clientes
+        </button>
+      </div>
+
+      <div style="margin-top: 15px;">
+        <button (click)="ListarFacturas()" mat-button class="BotonSidenav">
+          <mat-icon>receipt</mat-icon>          
+          Facturas
+        </button>
+      </div>
+
+      <div style="margin-top: 15px;">     
+        <button (click)="ListarDetalles()" mat-button class="BotonSidenav">
+          <mat-icon>rate_review</mat-icon>          
+          Detalles
+        </button>
+      </div>
+
+      <div style="margin-top: 15px;">
+        <button (click)="ListarProductos()" mat-button class="BotonSidenav">
+          <mat-icon>store</mat-icon>          
+          Productos
+        </button>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="BotonesSidenav">
+      <div style="margin-top: 15px;">
+        <button mat-button class="BotonSidenav">
+          <mat-icon>assignment_ind</mat-icon>          
+          Proveedores
+        </button>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="BotonesSidenav">
+
+      <div style="margin-top: 15px;">
+        <button mat-button class="BotonSidenav">
+          <mat-icon>assignment</mat-icon>          
+          Inventario
+        </button>
+      </div>
+
+      <div style="margin-top: 100%;">
+        <h3 style="margin-left: 12px;">Version 0.0.1</h3>
+      </div>
+      
+    </div>
+
+  </mat-drawer>
+</mat-drawer-container>
+
+

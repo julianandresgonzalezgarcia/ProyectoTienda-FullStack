@@ -1,0 +1,95 @@
+<div style="margin-left: 12px;">
+  <div class="container">
+
+        <button (click)="AbrirPanel()" mat-raised-button class="botonNuevo">
+          <mat-icon>add_circle</mat-icon>Nuevo
+        </button>
+  
+          <mat-form-field class="inputBuscar" appearance="outline">
+            <mat-label>Buscar</mat-label>
+
+            <input [(ngModel)]="id_cliente" name="id_cliente" matInput type="number" placeholder="Buscar">
+
+            <button (click)="BuscarPorId(id_cliente)" mat-icon-button matSuffix>
+              <mat-icon>search</mat-icon>
+            </button>   
+          </mat-form-field>
+
+          <button *ngIf="!usoBusqueda" mat-flat-button disabled class="botonVolverListar">
+            <mat-icon>list</mat-icon>Listar
+          </button>
+
+          <button *ngIf="usoBusqueda" mat-flat-button  class="botonVolverListar" (click)="Listar()">
+          <mat-icon>list</mat-icon>Listar
+          </button>
+<hr>
+          <div align="end">
+            <mat-form-field appearance="outline">
+              <mat-label>Buscar por texto</mat-label>
+              <input [(ngModel)]="texto" name="texto" matInput autocomplete="off">
+              <button (click)="BuscarPorTexto(texto)" mat-icon-button matSuffix>
+                  <mat-icon>search</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+
+    <div class="form-group row">
+
+     <!-- <mat-card *ngFor="let producto of productos" class="example-card">
+        <mat-card-header>
+          <mat-card-title-group>         
+            <mat-card-title>{{producto.nombre}}</mat-card-title>
+            <mat-card-subtitle>{{producto.stock}}</mat-card-subtitle>
+            <img style="margin-left: 70%;" mat-card-sm-image src="https://cdn-icons-png.flaticon.com/512/456/456212.png" >
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{producto.precio}}</p>
+        </mat-card-content>
+      </mat-card> -->
+
+      <!--<mat-card *ngFor="let producto of productos" class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{producto.nombre}}</mat-card-title>
+          <mat-card-subtitle>{{producto.id_producto}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Precio: {{producto.precio}}</p>
+          <p>Cantidad: {{producto.stock}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>-->
+
+      <mat-card class="example-card" *ngFor="let cliente of clientes">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{cliente.id_cliente}} {{cliente.nombre}}</mat-card-title>
+          <mat-card-subtitle>{{cliente.apellido}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+
+         <h4><b>Direccion:</b> {{cliente.direccion}}</h4>
+         <h4><b>Fecha de nacimiento:</b> {{cliente.fecha_nacimiento}}</h4>
+         <h4><b>Telefono:</b> {{cliente.telefono}}</h4>
+         <h4><b>Email:</b> {{cliente.email}}</h4>
+
+        </mat-card-content>
+        <mat-card-actions>
+
+          <button (click)="PanelActualizar(cliente.id_cliente)" mat-stroked-button> 
+            <mat-icon>update</mat-icon>      
+            Actualizar</button>
+            
+          <button (click)="PanelBorrar(cliente.id_cliente)" mat-stroked-button>
+            <mat-icon>delete</mat-icon>  
+            Borrar</button>
+
+        </mat-card-actions>
+      </mat-card>    
+  
+    </div>  
+  </div>
+</div>

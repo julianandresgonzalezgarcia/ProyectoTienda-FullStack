@@ -1,0 +1,58 @@
+<div class="panelCrear">
+
+    <div align="end">
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>cancel</mat-icon>             
+        </button>
+    </div>
+
+    <h1 mat-dialog-title>Datos personales</h1>
+
+    <form class="example-form">
+        <div mat-dialog-content>
+
+            <div>        
+                <mat-form-field class="inputCliente" appearance="fill">
+                    <mat-label>nombre</mat-label>
+                    <input [(ngModel)]="cliente.nombre" name="nombre" matInput type="text" placeholder="Nombre" autocomplete="off">
+                </mat-form-field>
+
+                <mat-form-field class="inputCliente" appearance="fill">
+                    <mat-label>Apellido</mat-label>
+                    <input [(ngModel)]="cliente.apellido" name="apellido" matInput type="text" placeholder="Apellido" autocomplete="off">   
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="inputCliente" appearance="fill">
+                    <mat-label>Direccion</mat-label>
+                    <input [(ngModel)]="cliente.direccion" name="direccion" matInput placeholder="Direccion" autocomplete="off">   
+                </mat-form-field>
+
+                <mat-form-field class="inputCliente" appearance="fill">
+                    <mat-label>Fecha de nacimiento</mat-label>
+                    <input [(ngModel)]="cliente.fecha_nacimiento" name="fecha_nacimiento" matInput type="date" value="yyyy-MM-dd">   
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="inputCliente" appearance="fill">
+                    <mat-label>Telefono</mat-label>
+                    <input [(ngModel)]="cliente.telefono" name="telefono" matInput maxlength="9" placeholder="Telefono" autocomplete="off">   
+                </mat-form-field>
+
+                <mat-form-field class="inputCliente" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input [(ngModel)]="cliente.email" name="email" matInput type="email" placeholder="Usuario@gmail.com" autocomplete="off">   
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div mat-dialog-actions align="end">
+        <button (click)="Guardar(cliente)" mat-stroked-button mat-dialog-close>
+            <mat-icon>save</mat-icon>Guardar
+        </button>      
+        </div>
+    </form>
+
+</div>

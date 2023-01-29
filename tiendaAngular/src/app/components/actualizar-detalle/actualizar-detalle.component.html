@@ -1,0 +1,54 @@
+<div class="panelActualizar">
+
+    <div align="end">
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>cancel</mat-icon>             
+        </button>
+    </div>
+
+    <h1 mat-dialog-title>Datos de la factura</h1>
+
+    <form class="example-form">
+        <div mat-dialog-content>
+
+            <div>     
+                <mat-form-field class="inputDetalleSeleccion" appearance="fill">
+                    <mat-label>Facturas</mat-label>
+                    <mat-select [(ngModel)]="detalle.factura.num_factura" name="factura.num_factura">
+                        <mat-option *ngFor="let factura of facturas" [value]="factura.num_factura">
+                            <b>ID factura: </b>{{factura.num_factura}} - <b>Cliente: </b>{{factura.cliente.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="inputDetalleSeleccion" appearance="fill">
+                    <mat-label>Productos</mat-label>
+                    <mat-select [(ngModel)]="detalle.producto.id_producto" name="producto.id_producto">
+                        <mat-option *ngFor="let producto of productos" [value]="producto.id_producto">
+                            <b>ID producto: </b>{{producto.id_producto}} - <b>Nombre: </b>{{producto.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="inputDetalle" appearance="fill">
+                    <mat-label>Cantidad</mat-label>
+                    <input [(ngModel)]="detalle.cantidad" name="cantidad" matInput type="number" placeholder="Cantidad">   
+                </mat-form-field>
+
+                <mat-form-field class="inputDetalle" appearance="fill">
+                    <mat-label>Precio</mat-label>
+                    <input [(ngModel)]="detalle.precio" name="precio" matInput type="number" placeholder="9999999">   
+                </mat-form-field>
+            </div>                                 
+        </div>
+
+        <div mat-dialog-actions align="end">
+            <button (click)="Actualizar(detalle.num_datalle,detalle)" mat-stroked-button mat-dialog-close>
+                <mat-icon>update</mat-icon>Actualizar
+            </button>      
+        </div>
+    </form>
+
+</div>

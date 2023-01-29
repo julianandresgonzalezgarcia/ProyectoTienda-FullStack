@@ -1,0 +1,240 @@
+<div style="margin-left: 11px; margin-top: 10px;">
+    <div class="container">
+
+        <div class="form-group row">
+            <mat-card class="cardInicio" style="background-color: rgb(202, 100, 100);">         
+                <mat-card-header>
+                    <mat-icon class="iconoFondo" style="margin-left: 55px;">account_box</mat-icon>
+                <mat-card-title>Clientes: {{clientesC}}</mat-card-title>
+                <mat-card-subtitle>Cantidad</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-footer>
+                    <button (click)="posicion='listarClientes'; ListarPosicion()" class="botonRuta" mat-raised-button>
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </mat-card-footer>
+            </mat-card>
+
+            <mat-card class="cardInicio" style="background-color: rgb(110, 109, 201);">
+                <mat-card-header>
+                    <mat-icon class="iconoFondo" style="margin-left: 50px;">receipt</mat-icon>
+                <mat-card-title>Facturas: {{facturasC}}</mat-card-title>
+                <mat-card-subtitle>Cantidad</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-footer>
+                    <button (click)="posicion='listarFacturas'; ListarPosicion()" class="botonRuta" mat-raised-button>
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </mat-card-footer>
+            </mat-card>
+
+            <mat-card class="cardInicio" style="background-color: rgb(110, 180, 212);">
+                <mat-card-header>
+                    <mat-icon class="iconoFondo" style="margin-left: 50px;">rate_review</mat-icon>
+                <mat-card-title>Detalles: {{detallesC}}</mat-card-title>
+                <mat-card-subtitle>Cantidad</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-footer>
+                    <button (click)="posicion='listarDetalles'; ListarPosicion()" class="botonRuta" mat-raised-button>
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </mat-card-footer>
+            </mat-card>
+
+            <mat-card class="cardInicio" style="background-color: rgb(217, 226, 81);">
+                <mat-card-header>
+                    <mat-icon class="iconoFondo" style="margin-left: 40px;">store</mat-icon>
+                <mat-card-title>Productos: {{productosC}}</mat-card-title>
+                <mat-card-subtitle>Cantidad</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-footer>
+                    <button (click)="posicion='listarProductos'; ListarPosicion()" class="botonRuta" mat-raised-button >
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </div>
+    
+    <div style="margin-top: 10px;">
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="Clientes-Productos">
+                <div class="container">
+
+                    <div align="end">
+                        <mat-form-field class="inputBuscar" appearance="outline">
+                            <mat-label>Buscar por texto</mat-label>
+                            <input [(ngModel)]="texto" name="texto" matInput placeholder="Buscar" autocomplete="off">
+                            <button (click)="BuscarPorTexto(texto)" mat-icon-button matSuffix>
+                                <mat-icon>search</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <mat-form-field class="inputBuscar" appearance="outline" style="margin-left: 10px;">
+                            <mat-label>Buscar</mat-label>
+                            <input [(ngModel)]="id_cliente" name="id_cliente" matInput type="number" placeholder="Buscar" autocomplete="off">
+                            <button (click)="BuscarPorId(id_cliente)" mat-icon-button matSuffix>
+                                <mat-icon>search</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <button class="botonListarDeNuevo" *ngIf="!usoBusqueda" disabled mat-flat-button>
+                            <mat-icon>list</mat-icon> Listar
+                        </button>
+
+                        <button class="botonListarDeNuevo" *ngIf="usoBusqueda" (click)="ListarDtoPro()" mat-flat-button>
+                            <mat-icon>list</mat-icon> Listar
+                        </button>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <mat-card class="example-card" *ngFor="let dto of dtoPro">
+                            <mat-card-header>
+                            <div mat-card-avatar class="example-header-image"></div>
+                            <mat-card-title>{{dto.idCliente}} {{dto.nombre}}</mat-card-title>
+                            <mat-card-subtitle>{{dto.telefono}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                    
+                            <h4><b>Direccion:</b> {{dto.direccion}}</h4>
+                            <h4><b>Email:</b> {{dto.email}}</h4>
+                            <h4><b>ID factura:</b> {{dto.numFactura}}</h4>
+                            <h4><b>Fecha factura:</b> {{dto.facturaFecha}}</h4>
+                            <h4><b>Producto:</b> {{dto.nombreProducto}}</h4>
+                            <h4><b>Cantidad:</b> {{dto.cantidad}}</h4>
+                            <h4><b>Precio:</b> ${{dto.precio}}</h4>
+                    
+                            </mat-card-content>
+                        </mat-card>  
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Facturas">
+                <mat-card>
+                    <mat-card-content>
+
+
+                        <div align="end">
+
+                            <mat-form-field class="inputBuscar" appearance="outline">
+                                <mat-label>Buscar por texto</mat-label>
+                                <input [(ngModel)]="texto1" name="texto1" matInput placeholder="Buscar" autocomplete="off">
+                                <button (click)="BuscarDetallePorTexto(texto1)" mat-icon-button matSuffix>
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </mat-form-field>
+
+                            <mat-form-field class="inputBuscar" appearance="outline" style="margin-left: 10px;">
+                                <mat-label>Buscar id cliente</mat-label>
+                                <input [(ngModel)]="id_cliente1" name="id_cliente1" type="number" matInput placeholder="Buscar" autocomplete="off">
+                                <button (click)="BuscarPorIdCliente(id_cliente1)" mat-icon-button matSuffix>
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </mat-form-field>
+
+                            <mat-form-field class="inputBuscar" appearance="outline" style="margin-left: 10px;">
+                                <mat-label>Buscar id factura</mat-label>
+                                <input [(ngModel)]="id_factura" name="id_factura" type="number" matInput placeholder="Buscar" autocomplete="off">
+                                <button (click)="BuscarPorIdFactura(id_factura)" mat-icon-button matSuffix>
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                            </mat-form-field>
+
+                            <button class="botonListarDeNuevo" *ngIf="!usoBusqueda1" disabled mat-flat-button>
+                                <mat-icon>list</mat-icon> Listar
+                            </button>
+    
+                            <button class="botonListarDeNuevo" *ngIf="usoBusqueda1" (click)="ListarDetalles()" mat-flat-button>
+                                <mat-icon>list</mat-icon> Listar
+                            </button>
+
+                        </div>
+
+
+                        <table mat-table [dataSource]="facturas" class="mat-elevation-z8">
+                            
+                            <ng-container matColumnDef="num_datalle">
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Num detalle </th>
+                              <td mat-cell *matCellDef="let element"> {{element.num_datalle}} </td>
+                            </ng-container>
+                          
+                            <ng-container matColumnDef="cantidad">
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Cantidad </th>
+                              <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+                            </ng-container>
+                          
+                            <ng-container matColumnDef="precio">
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Precio </th>
+                              <td mat-cell *matCellDef="let element"> $ {{element.precio}} </td>
+                            </ng-container>
+                          
+                            <ng-container matColumnDef="stock">
+                              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Stock </th>
+                              <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
+                            </ng-container>
+
+                              <ng-container matColumnDef="factura.num_factura">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Id factura </th>
+                                <td mat-cell *matCellDef="let element"> {{element.factura.num_factura}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="factura.fecha">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha factura </th>
+                                <td mat-cell *matCellDef="let element"> {{element.factura.fecha}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="factura.cliente.id_cliente">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Id cliente </th>
+                                <td mat-cell *matCellDef="let element"> {{element.factura.cliente.id_cliente}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="factura.cliente.nombre">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Cliente nombre </th>
+                                <td mat-cell *matCellDef="let element"> {{element.factura.cliente.nombre}} {{element.factura.cliente.apellido}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="factura.cliente.direccion">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Cliente direccion </th>
+                                <td mat-cell *matCellDef="let element"> {{element.factura.cliente.direccion}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="factura.cliente.telefono">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Cliente telefono </th>
+                                <td mat-cell *matCellDef="let element"> {{element.factura.cliente.telefono}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="factura.cliente.email">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Cliente email </th>
+                                <td mat-cell *matCellDef="let element"> {{element.factura.cliente.email}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="producto.id_producto">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Id producto </th>
+                                <td mat-cell *matCellDef="let element"> {{element.producto.id_producto}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="producto.nombre">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Producto nombre </th>
+                                <td mat-cell *matCellDef="let element"> {{element.producto.nombre}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="producto.precio">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Producto precio </th>
+                                <td mat-cell *matCellDef="let element">$ {{element.producto.precio}} </td>
+                              </ng-container>
+
+                              <ng-container matColumnDef="producto.stock">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Producto stock </th>
+                                <td mat-cell *matCellDef="let element"> {{element.producto.stock}} </td>
+                              </ng-container>
+                           
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                          </table>  
+                    </mat-card-content>
+                  </mat-card>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
